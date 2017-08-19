@@ -1,7 +1,11 @@
 package com.sourong.poster.service;
 
+import java.io.File;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.base.common.util.ConfigUtil;
 import com.base.common.util.SearchConditionUtils;
 import com.base.datatables.domain.DataTablesRequest;
 import com.base.datatables.domain.DataTablesResponse;
@@ -39,7 +43,15 @@ public class PosterServiceImp implements PosterService {
 	 */
 	@Override
 	public int update(PosterVO entity) {
-		return mapper.updateByPrimaryKeySelective(entity);
+		PosterVO record=mapper.selectByPrimaryKey(entity.getPosterid());
+		int result = mapper.updateByPrimaryKeySelective(entity);
+		if (entity.getPosterurl() != null && !entity.getPosterurl().equals(record.getPosterurl())) {
+			File f = new File(ConfigUtil.getValue("saveImage") + record.getPosterurl());
+			if (f.exists()) {
+				f.delete();
+			}
+		}
+		return result;
 	}
 	/**
 	 * 查询

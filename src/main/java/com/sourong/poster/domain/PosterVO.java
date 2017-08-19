@@ -3,9 +3,14 @@ package com.sourong.poster.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class PosterVO implements Serializable {
     private Integer posterid;
-
+    
+    @Length(max=25,min=1)
+    @NotEmpty
     private String postertitle;
 
     private String posterurl;

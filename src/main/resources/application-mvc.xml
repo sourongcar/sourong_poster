@@ -58,7 +58,7 @@
 		<property name="contentType" value="text/html; charset=utf-8" />
 		<property name="cache" value="false" />
 	</bean>
-	<!-- <mvc:interceptors>
+	<mvc:interceptors>
 		<bean class="com.base.login.interceptor.LoginStateHandlerInterceptor">
 			<property name="allowUris">
 				<list>
@@ -67,30 +67,10 @@
 					<value>getUUID.action</value>
 					<value>getSalt.action</value>
 					<value>doLogin.action</value>
-					<value>register.action</value>
-					<value>getArticle.action</value>
-					<value>getCompanyinformation.action</value>
-					<value>forMoreInformation.action</value>
-					<value>getDisplayList.action</value>
-					<value>product/rest/looping</value> 
-					<value>product/rest/display</value>
-					<value>product/rest/getFull</value>
-					<value>getCompanyinformation.action</value>
-					<value>doAdd.action</value>
-					<value>doDelete.action</value>
-					<value>product/rest/getProductByCarType</value>
-					<value>product/rest/getProductBybrandname</value>
-					<value>ifBeCollected.action</value>
-					<value>operateUserCollection.action</value>
-					<value>brand/weblist</value>
-					<value>brand/getList</value>
-					<value>carpicture/rest/getFull</value>
-					<value>product/rest/getlistbydosearch</value>
-					<value>product/rest/getAlllist</value>
 				</list>
 			</property>
 		</bean>
-	</mvc:interceptors> -->
+	</mvc:interceptors>
 	<!-- 异常处理 -->
 	<bean id="exceptionResolver"
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">

@@ -49,7 +49,7 @@
 									class="icon-off"></i> 注销
 							</a></li>
 							<li><a href="${path}/user/updatePassword.action" target="contentframe"><i
-									class="icon-off"></i> 修改密码</a></li>
+									class="icon-lock"></i> 修改密码</a></li>
 						</ul></li>
 				</ul>
 				<!-- /.ace-nav -->
@@ -121,36 +121,10 @@
 						</ul>
 					</li>
 					<li>
-						<a href="#" class="dropdown-toggle"> <i class="icon-comments-alt"></i> <span class="menu-text">用户咨询管理</span><b class="arrow icon-angle-down"></b></a>
+						<a href="#" class="dropdown-toggle"> <i class="icon-qrcode"></i> <span class="menu-text">海报模板管理</span><b class="arrow icon-angle-down"></b></a>
 						<ul class="submenu">
 							<li>
-								<a href="${path }/consultant/list.action?isRead=0"target="contentframe"><i class="icon-double-angle-right"></i>待咨询用户列表</a>
-							</li>
-							<li>
-								<a href="${path }/consultant/list.action?isRead=1"target="contentframe"><i class="icon-double-angle-right"></i>已咨询用户列表</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#" class="dropdown-toggle"> <i class="icon-info-sign"></i> <span class="menu-text">公司信息管理</span><b class="arrow icon-angle-down"></b></a>
-						<ul class="submenu">
-							<li>
-								<a href="${path }/company/list.action"target="contentframe"><i class="icon-double-angle-right"></i>公司信息列表</a>
-							</li>
-							<li>
-								<a href="${path }/article/list.action"target="contentframe"><i class="icon-double-angle-right"></i>介绍页面列表</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#" class="dropdown-toggle"> <i class="icon-tags"></i> <span class="menu-text">产品信息管理</span><b class="arrow icon-angle-down"></b></a>
-						<ul class="submenu">
-							<li>
-								<a href="${path }/brand/list.action"target="contentframe"><i class="icon-double-angle-right"></i>品牌列表</a>
-							</li>
-						
-							<li>
-								<a href="${path }/product/list.action"target="contentframe"><i class="icon-double-angle-right"></i>产品列表</a>
+								<a href="${path }/poster/list.action?isRead=0"target="contentframe"><i class="icon-double-angle-right"></i>海报模板列表</a>
 							</li>
 						</ul>
 					</li>
@@ -174,7 +148,7 @@
 			<div class="main-content">
 				<div class="breadcrumbs" id="breadcrumbs"></div>
 
-				<div style="height:calc(100vh - 86px)">
+				<div style="height:calc(100vh - 89px)">
 					<iframe width="100%" height="100%" id="contentframe" name="contentframe"
 								onload="ifmresize();this.contentWindow.document.body.style.padding='15px';" frameborder="0" scrolling="yes"
 								src="${path}/user/list.action"> </iframe>

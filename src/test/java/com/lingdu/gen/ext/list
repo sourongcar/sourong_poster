@@ -92,7 +92,7 @@
 								},
 								</#list>
 								{
-									"data" : "id",
+									"data" : "${domainName?lower_case}id",
 									"orderable":false
 								}],
 								"columnDefs" : [
@@ -126,7 +126,7 @@
 		
 		function del(id){
 			if(window.confirm("你确定要删除？")){
-				$.getJSON("${path}/${domainName?lower_case}/rest/doDelete.action?id="+id,
+				$.getJSON("${path}/${domainName?lower_case}/rest/doDelete.action?${domainName?lower_case}id="+id,
 							function(data){
 						alert(data.msg);
 						if(data.status==1){
