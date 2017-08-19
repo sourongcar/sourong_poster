@@ -17,7 +17,7 @@
 	<div class="form-group">
 		<label for="${item}" class="col-sm-2 control-label">${item}</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" id="${item}" name="${item}" value="${item}"
+			<input type="text" class="form-control" id="${item}" name="${item}" value="${"${"}${item}}"
 				   placeholder="请输入${item}">
 		</div>
 	</div>

@@ -6,10 +6,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import ${groupid}.common.domain.CurrentUser;
-import ${groupid}.common.domain.JsonResult;
-import ${groupid}.datatables.domain.DataTablesRequest;
-import ${groupid}.datatables.domain.DataTablesResponse;
+import com.base.common.domain.CurrentUser;
+import com.base.common.domain.JsonResult;
+import com.base.datatables.domain.DataTablesRequest;
+import com.base.datatables.domain.DataTablesResponse;
 import ${groupid}.${domainName?lower_case}.domain.${domainName}VO;
 import ${groupid}.${domainName?lower_case}.service.${domainName}Service;
 
@@ -32,7 +32,7 @@ public class ${domainName}Controller {
 	public String doEdit(${domainName}VO entity){
 		CurrentUser user = CurrentUser.getInstance();
 		//entity.setCreatorUserId(user.getUserId());//创建者id
-		if(entity.getId()!=null){//修改
+		if(entity.get${domainName}id()!=null){//修改
 			service.update(entity);
 		}else{//新增
 			service.add(entity);

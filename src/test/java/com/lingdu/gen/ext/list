@@ -83,7 +83,7 @@
 								},
 								"columns" : [ 
 							     {
-									"data" : "ctime",
+									"data" : "createtime",
 									"visible" : false
 								},
 								<#list fieldList as item>

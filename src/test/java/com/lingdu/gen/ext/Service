@@ -1,7 +1,7 @@
 package ${groupid}.${domainName?lower_case}.service;
 
-import ${groupid}.datatables.domain.DataTablesRequest;
-import ${groupid}.datatables.domain.DataTablesResponse;
+import com.base.datatables.domain.DataTablesRequest;
+import com.base.datatables.domain.DataTablesResponse;
 import ${groupid}.${domainName?lower_case}.domain.${domainName}VO;
 
 public interface ${domainName}Service {

@@ -2,9 +2,9 @@ package ${groupid}.${domainName?lower_case}.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ${groupid}.common.util.SearchConditionUtils;
-import ${groupid}.datatables.domain.DataTablesRequest;
-import ${groupid}.datatables.domain.DataTablesResponse;
+import com.base.common.util.SearchConditionUtils;
+import com.base.datatables.domain.DataTablesRequest;
+import com.base.datatables.domain.DataTablesResponse;
 import ${groupid}.${domainName?lower_case}.dao.${domainName}VOMapper;
 import ${groupid}.${domainName?lower_case}.domain.${domainName}VO;
 import ${groupid}.${domainName?lower_case}.domain.${domainName}VOExample;
