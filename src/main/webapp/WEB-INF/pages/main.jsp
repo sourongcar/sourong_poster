@@ -121,6 +121,14 @@
 						</ul>
 					</li>
 					<li>
+						<a href="#" class="dropdown-toggle"> <i class="icon-user"></i> <span class="menu-text">用户管理</span><b class="arrow icon-angle-down"></b></a>
+						<ul class="submenu">
+							<li>
+								<a href="${path }/wxuser/list.action"target="contentframe"><i class="icon-double-angle-right"></i>用户列表</a>
+							</li>
+						</ul>
+					</li>
+					<li>
 						<a href="#" class="dropdown-toggle"> <i class="icon-qrcode"></i> <span class="menu-text">海报模板管理</span><b class="arrow icon-angle-down"></b></a>
 						<ul class="submenu">
 							<li>

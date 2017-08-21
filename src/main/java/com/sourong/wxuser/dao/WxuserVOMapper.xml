@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sourong.wxuser.dao.WxuserVOMapper" >
+  <resultMap id="BaseResultMap" type="com.sourong.wxuser.domain.WxuserVO" >
+    <id column="userID" property="userid" jdbcType="INTEGER" />
+    <result column="openID" property="openid" jdbcType="VARCHAR" />
+    <result column="nickName" property="nickname" jdbcType="VARCHAR" />
+    <result column="userPhoto" property="userphoto" jdbcType="VARCHAR" />
+    <result column="userPhone" property="userphone" jdbcType="VARCHAR" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="referrerID" property="referrerid" jdbcType="INTEGER" />
+    <result column="role" property="role" jdbcType="INTEGER" />
+    <result column="isDisplay" property="isdisplay" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="changeTime" property="changetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    userID, openID, nickName, userPhoto, userPhone, userName, referrerID, role, isDisplay, 
+    createTime, changeTime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sourong.wxuser.domain.WxuserVOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from wx_wxuser
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null" >
+      <if test="offset != null" >
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null" >
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from wx_wxuser
+    where userID = #{userid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from wx_wxuser
+    where userID = #{userid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sourong.wxuser.domain.WxuserVOExample" >
+    delete from wx_wxuser
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sourong.wxuser.domain.WxuserVO" useGeneratedKeys="true" keyProperty="id" >
+    insert into wx_wxuser (userID, openID, nickName, 
+      userPhoto, userPhone, userName, 
+      referrerID, role, isDisplay, 
+      createTime, changeTime)
+    values (#{userid,jdbcType=INTEGER}, #{openid,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{userphoto,jdbcType=VARCHAR}, #{userphone,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{referrerid,jdbcType=INTEGER}, #{role,jdbcType=INTEGER}, #{isdisplay,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{changetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sourong.wxuser.domain.WxuserVO" useGeneratedKeys="true" keyProperty="id" >
+    insert into wx_wxuser
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        userID,
+      </if>
+      <if test="openid != null" >
+        openID,
+      </if>
+      <if test="nickname != null" >
+        nickName,
+      </if>
+      <if test="userphoto != null" >
+        userPhoto,
+      </if>
+      <if test="userphone != null" >
+        userPhone,
+      </if>
+      <if test="username != null" >
+        userName,
+      </if>
+      <if test="referrerid != null" >
+        referrerID,
+      </if>
+      <if test="role != null" >
+        role,
+      </if>
+      <if test="isdisplay != null" >
+        isDisplay,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="changetime != null" >
+        changeTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userphoto != null" >
+        #{userphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="userphone != null" >
+        #{userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="referrerid != null" >
+        #{referrerid,jdbcType=INTEGER},
+      </if>
+      <if test="role != null" >
+        #{role,jdbcType=INTEGER},
+      </if>
+      <if test="isdisplay != null" >
+        #{isdisplay,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changetime != null" >
+        #{changetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sourong.wxuser.domain.WxuserVOExample" resultType="java.lang.Integer" >
+    select count(*) from wx_wxuser
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update wx_wxuser
+    <set >
+      <if test="record.userid != null" >
+        userID = #{record.userid,jdbcType=INTEGER},
+      </if>
+      <if test="record.openid != null" >
+        openID = #{record.openid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nickname != null" >
+        nickName = #{record.nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userphoto != null" >
+        userPhoto = #{record.userphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userphone != null" >
+        userPhone = #{record.userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.username != null" >
+        userName = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.referrerid != null" >
+        referrerID = #{record.referrerid,jdbcType=INTEGER},
+      </if>
+      <if test="record.role != null" >
+        role = #{record.role,jdbcType=INTEGER},
+      </if>
+      <if test="record.isdisplay != null" >
+        isDisplay = #{record.isdisplay,jdbcType=INTEGER},
+      </if>
+      <if test="record.createtime != null" >
+        createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.changetime != null" >
+        changeTime = #{record.changetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update wx_wxuser
+    set userID = #{record.userid,jdbcType=INTEGER},
+      openID = #{record.openid,jdbcType=VARCHAR},
+      nickName = #{record.nickname,jdbcType=VARCHAR},
+      userPhoto = #{record.userphoto,jdbcType=VARCHAR},
+      userPhone = #{record.userphone,jdbcType=VARCHAR},
+      userName = #{record.username,jdbcType=VARCHAR},
+      referrerID = #{record.referrerid,jdbcType=INTEGER},
+      role = #{record.role,jdbcType=INTEGER},
+      isDisplay = #{record.isdisplay,jdbcType=INTEGER},
+      createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      changeTime = #{record.changetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sourong.wxuser.domain.WxuserVO" >
+    update wx_wxuser
+    <set >
+      <if test="openid != null" >
+        openID = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        nickName = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userphoto != null" >
+        userPhoto = #{userphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="userphone != null" >
+        userPhone = #{userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="referrerid != null" >
+        referrerID = #{referrerid,jdbcType=INTEGER},
+      </if>
+      <if test="role != null" >
+        role = #{role,jdbcType=INTEGER},
+      </if>
+      <if test="isdisplay != null" >
+        isDisplay = #{isdisplay,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changetime != null" >
+        changeTime = #{changetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where userID = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sourong.wxuser.domain.WxuserVO" >
+    update wx_wxuser
+    set openID = #{openid,jdbcType=VARCHAR},
+      nickName = #{nickname,jdbcType=VARCHAR},
+      userPhoto = #{userphoto,jdbcType=VARCHAR},
+      userPhone = #{userphone,jdbcType=VARCHAR},
+      userName = #{username,jdbcType=VARCHAR},
+      referrerID = #{referrerid,jdbcType=INTEGER},
+      role = #{role,jdbcType=INTEGER},
+      isDisplay = #{isdisplay,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      changeTime = #{changetime,jdbcType=TIMESTAMP}
+    where userID = #{userid,jdbcType=INTEGER}
+  </update>
+</mapper>
