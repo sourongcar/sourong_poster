@@ -136,6 +136,15 @@
 							</li>
 						</ul>
 					</li>
+										<li>
+						<a href="#" class="dropdown-toggle"> <i class="icon-info-sign"></i> <span class="menu-text">服务咨询管理</span><b class="arrow icon-angle-down"></b></a>
+						<ul class="submenu">
+							<li>
+								<a href="${path }/reservation/list.action?isRead=0"target="contentframe"><i class="icon-double-angle-right"></i>待服务咨询用户列表</a>
+								<a href="${path }/reservation/list.action?isRead=1"target="contentframe"><i class="icon-double-angle-right"></i>已服务咨询用户列表</a>
+							</li>
+						</ul>
+					</li>
 				</ul>
 				<!-- /.nav-list -->
 
