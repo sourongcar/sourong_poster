@@ -144,7 +144,7 @@
 								"columnDefs" : [
 										{
 											"render" : function(data, type, row) {
-												return '<img onclick="showImg(this.src)" src="/img/'+data+'" data-rel="tooltip" title="查看图片" style="max-width:200px;">';
+												return '<img onclick="showImg(this.src)" src="/images/'+data+'" data-rel="tooltip" title="查看图片" style="max-width:200px;">';
 											},
 											"targets" : 2
 										},
