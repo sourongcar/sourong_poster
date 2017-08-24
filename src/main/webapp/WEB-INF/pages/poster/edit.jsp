@@ -74,8 +74,8 @@
 				<div class="poster_preview" style="text-align: center;">
 					<div>
 						<img<c:if test="${entity.posterurl ne null }"> src="/images/${entity.posterurl}"</c:if>>
-						<div style="position: absolute; left: 115px; top: 475px; border: 5px dashed #ddd">
-							<img class="" src="${path }/resources/assets/images/ewm.jpeg">
+						<div style="position: absolute; left: 115px; top: 475px; width:240px;height:240px;border: 5px dashed #ddd">
+							<img style="width:100%;height:100%" src="${path }/resources/assets/images/ewm.jpeg">
 						</div>
 					</div>
 				</div>

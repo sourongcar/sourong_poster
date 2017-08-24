@@ -182,7 +182,18 @@
 									"orderable":false
 								}],
 								"columnDefs" : [
-									
+										{
+											"render" : function(data, type, row) {
+												return data||"未知";
+											},
+											"targets" : [5,6]
+										},
+										{
+											"render" : function(data, type, row) {
+												return data||"无";
+											},
+											"targets" : 7
+										},
 										{
 											"render" : function(data, type, row) {
 												return '<p:permission privilege="com.sourong.wxuser.controller.WxuserController:doEdit"><a href="${path }/wxuser/edit.action?id='+row.userid+'" class="tooltip-success" data-rel="tooltip" title="修改"><span class="green"><i class="icon-edit bigger-120"></i></a></p:permission>&nbsp;&nbsp;'
