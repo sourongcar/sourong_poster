@@ -155,15 +155,22 @@
 										}
 									},
 									"targets" :7,
-									"width": "40%",
+									"width": "40%"
 								},{
 									"render" : function(data, type, row,meta) {		
 								
 								      return 	"<button onClick=checkPartner("+row.userid+") data-toggle='modal' data-target='#myModal' class='btn btn-warning' style='width:102px;line-height: 0.5;font-size: 11px;padding: 7px 10px;'>查看上家</button>"
 									},
 									"targets" :6,
-									"width": "10%",
-								}],
+									"width": "10%"
+								},{
+									"render" : function(data, type, row,meta) {		
+										
+									      return data||"无"
+										},
+										"targets" :4
+								}
+								],
 
 								"language" : {
 									"url" : "${path }/resources/assets/language/zh_CN.txt"
