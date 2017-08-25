@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sourongindex.product.dao.ProductVOMapper" >
+  <resultMap id="BaseResultMap" type="com.sourongindex.product.domain.ProductVO" >
+    <id column="productId" property="productid" jdbcType="INTEGER" />
+    <result column="productName" property="productname" jdbcType="VARCHAR" />
+    <result column="productIntro" property="productintro" jdbcType="VARCHAR" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="lastTime" property="lasttime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    productId, productName, productIntro, icon, createTime, lastTime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sourongindex.product.domain.ProductVOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null" >
+      <if test="offset != null" >
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null" >
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where productId = #{productid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from product
+    where productId = #{productid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sourongindex.product.domain.ProductVOExample" >
+    delete from product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sourongindex.product.domain.ProductVO" useGeneratedKeys="true" keyProperty="id" >
+    insert into product (productId, productName, productIntro, 
+      icon, createTime, lastTime
+      )
+    values (#{productid,jdbcType=INTEGER}, #{productname,jdbcType=VARCHAR}, #{productintro,jdbcType=VARCHAR}, 
+      #{icon,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{lasttime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sourongindex.product.domain.ProductVO" useGeneratedKeys="true" keyProperty="id" >
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="productid != null" >
+        productId,
+      </if>
+      <if test="productname != null" >
+        productName,
+      </if>
+      <if test="productintro != null" >
+        productIntro,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="lasttime != null" >
+        lastTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="productid != null" >
+        #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="productname != null" >
+        #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="productintro != null" >
+        #{productintro,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lasttime != null" >
+        #{lasttime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sourongindex.product.domain.ProductVOExample" resultType="java.lang.Integer" >
+    select count(*) from product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update product
+    <set >
+      <if test="record.productid != null" >
+        productId = #{record.productid,jdbcType=INTEGER},
+      </if>
+      <if test="record.productname != null" >
+        productName = #{record.productname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productintro != null" >
+        productIntro = #{record.productintro,jdbcType=VARCHAR},
+      </if>
+      <if test="record.icon != null" >
+        icon = #{record.icon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null" >
+        createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lasttime != null" >
+        lastTime = #{record.lasttime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update product
+    set productId = #{record.productid,jdbcType=INTEGER},
+      productName = #{record.productname,jdbcType=VARCHAR},
+      productIntro = #{record.productintro,jdbcType=VARCHAR},
+      icon = #{record.icon,jdbcType=VARCHAR},
+      createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      lastTime = #{record.lasttime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sourongindex.product.domain.ProductVO" >
+    update product
+    <set >
+      <if test="productname != null" >
+        productName = #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="productintro != null" >
+        productIntro = #{productintro,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lasttime != null" >
+        lastTime = #{lasttime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where productId = #{productid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sourongindex.product.domain.ProductVO" >
+    update product
+    set productName = #{productname,jdbcType=VARCHAR},
+      productIntro = #{productintro,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      lastTime = #{lasttime,jdbcType=TIMESTAMP}
+    where productId = #{productid,jdbcType=INTEGER}
+  </update>
+</mapper>

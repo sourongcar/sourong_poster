@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sourongindex.serviceidea.dao.ServiceideaVOMapper" >
+  <resultMap id="BaseResultMap" type="com.sourongindex.serviceidea.domain.ServiceideaVO" >
+    <id column="serviceideaId" property="serviceideaid" jdbcType="INTEGER" />
+    <result column="picName" property="picname" jdbcType="VARCHAR" />
+    <result column="Ideadescribe" property="ideadescribe" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="lastTime" property="lasttime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    serviceideaId, picName, Ideadescribe, createTime, lastTime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sourongindex.serviceidea.domain.ServiceideaVOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from serviceidea
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null" >
+      <if test="offset != null" >
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null" >
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from serviceidea
+    where serviceideaId = #{serviceideaid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from serviceidea
+    where serviceideaId = #{serviceideaid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sourongindex.serviceidea.domain.ServiceideaVOExample" >
+    delete from serviceidea
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sourongindex.serviceidea.domain.ServiceideaVO" useGeneratedKeys="true" keyProperty="id" >
+    insert into serviceidea (serviceideaId, picName, Ideadescribe, 
+      createTime, lastTime)
+    values (#{serviceideaid,jdbcType=INTEGER}, #{picname,jdbcType=VARCHAR}, #{ideadescribe,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{lasttime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sourongindex.serviceidea.domain.ServiceideaVO" useGeneratedKeys="true" keyProperty="id" >
+    insert into serviceidea
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="serviceideaid != null" >
+        serviceideaId,
+      </if>
+      <if test="picname != null" >
+        picName,
+      </if>
+      <if test="ideadescribe != null" >
+        Ideadescribe,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="lasttime != null" >
+        lastTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="serviceideaid != null" >
+        #{serviceideaid,jdbcType=INTEGER},
+      </if>
+      <if test="picname != null" >
+        #{picname,jdbcType=VARCHAR},
+      </if>
+      <if test="ideadescribe != null" >
+        #{ideadescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lasttime != null" >
+        #{lasttime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sourongindex.serviceidea.domain.ServiceideaVOExample" resultType="java.lang.Integer" >
+    select count(*) from serviceidea
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update serviceidea
+    <set >
+      <if test="record.serviceideaid != null" >
+        serviceideaId = #{record.serviceideaid,jdbcType=INTEGER},
+      </if>
+      <if test="record.picname != null" >
+        picName = #{record.picname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ideadescribe != null" >
+        Ideadescribe = #{record.ideadescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null" >
+        createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lasttime != null" >
+        lastTime = #{record.lasttime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update serviceidea
+    set serviceideaId = #{record.serviceideaid,jdbcType=INTEGER},
+      picName = #{record.picname,jdbcType=VARCHAR},
+      Ideadescribe = #{record.ideadescribe,jdbcType=VARCHAR},
+      createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      lastTime = #{record.lasttime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sourongindex.serviceidea.domain.ServiceideaVO" >
+    update serviceidea
+    <set >
+      <if test="picname != null" >
+        picName = #{picname,jdbcType=VARCHAR},
+      </if>
+      <if test="ideadescribe != null" >
+        Ideadescribe = #{ideadescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lasttime != null" >
+        lastTime = #{lasttime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where serviceideaId = #{serviceideaid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sourongindex.serviceidea.domain.ServiceideaVO" >
+    update serviceidea
+    set picName = #{picname,jdbcType=VARCHAR},
+      Ideadescribe = #{ideadescribe,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      lastTime = #{lasttime,jdbcType=TIMESTAMP}
+    where serviceideaId = #{serviceideaid,jdbcType=INTEGER}
+  </update>
+</mapper>

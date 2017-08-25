@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sourongindex.companyinfom.dao.CompanyinfomVOMapper" >
+  <resultMap id="BaseResultMap" type="com.sourongindex.companyinfom.domain.CompanyinfomVO" >
+    <id column="companyid" property="companyid" jdbcType="INTEGER" />
+    <result column="companyName" property="companyname" jdbcType="VARCHAR" />
+    <result column="servicePhone" property="servicephone" jdbcType="VARCHAR" />
+    <result column="serviceTime" property="servicetime" jdbcType="VARCHAR" />
+    <result column="companyaddress" property="companyaddress" jdbcType="VARCHAR" />
+    <result column="companylogo" property="companylogo" jdbcType="VARCHAR" />
+    <result column="companyQR" property="companyqr" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="lastTime" property="lasttime" jdbcType="TIMESTAMP" />
+    <result column="detailaddress" property="detailaddress" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    companyid, companyName, servicePhone, serviceTime, companyaddress, companylogo, companyQR, 
+    createTime, lastTime, detailaddress
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sourongindex.companyinfom.domain.CompanyinfomVOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from companyinfom
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null" >
+      <if test="offset != null" >
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null" >
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from companyinfom
+    where companyid = #{companyid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from companyinfom
+    where companyid = #{companyid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sourongindex.companyinfom.domain.CompanyinfomVOExample" >
+    delete from companyinfom
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sourongindex.companyinfom.domain.CompanyinfomVO" useGeneratedKeys="true" keyProperty="id" >
+    insert into companyinfom (companyid, companyName, servicePhone, 
+      serviceTime, companyaddress, companylogo, 
+      companyQR, createTime, lastTime, 
+      detailaddress)
+    values (#{companyid,jdbcType=INTEGER}, #{companyname,jdbcType=VARCHAR}, #{servicephone,jdbcType=VARCHAR}, 
+      #{servicetime,jdbcType=VARCHAR}, #{companyaddress,jdbcType=VARCHAR}, #{companylogo,jdbcType=VARCHAR}, 
+      #{companyqr,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{lasttime,jdbcType=TIMESTAMP}, 
+      #{detailaddress,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sourongindex.companyinfom.domain.CompanyinfomVO" useGeneratedKeys="true" keyProperty="id" >
+    insert into companyinfom
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="companyid != null" >
+        companyid,
+      </if>
+      <if test="companyname != null" >
+        companyName,
+      </if>
+      <if test="servicephone != null" >
+        servicePhone,
+      </if>
+      <if test="servicetime != null" >
+        serviceTime,
+      </if>
+      <if test="companyaddress != null" >
+        companyaddress,
+      </if>
+      <if test="companylogo != null" >
+        companylogo,
+      </if>
+      <if test="companyqr != null" >
+        companyQR,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="lasttime != null" >
+        lastTime,
+      </if>
+      <if test="detailaddress != null" >
+        detailaddress,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="companyid != null" >
+        #{companyid,jdbcType=INTEGER},
+      </if>
+      <if test="companyname != null" >
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="servicephone != null" >
+        #{servicephone,jdbcType=VARCHAR},
+      </if>
+      <if test="servicetime != null" >
+        #{servicetime,jdbcType=VARCHAR},
+      </if>
+      <if test="companyaddress != null" >
+        #{companyaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companylogo != null" >
+        #{companylogo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyqr != null" >
+        #{companyqr,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lasttime != null" >
+        #{lasttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="detailaddress != null" >
+        #{detailaddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sourongindex.companyinfom.domain.CompanyinfomVOExample" resultType="java.lang.Integer" >
+    select count(*) from companyinfom
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update companyinfom
+    <set >
+      <if test="record.companyid != null" >
+        companyid = #{record.companyid,jdbcType=INTEGER},
+      </if>
+      <if test="record.companyname != null" >
+        companyName = #{record.companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.servicephone != null" >
+        servicePhone = #{record.servicephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.servicetime != null" >
+        serviceTime = #{record.servicetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyaddress != null" >
+        companyaddress = #{record.companyaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companylogo != null" >
+        companylogo = #{record.companylogo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyqr != null" >
+        companyQR = #{record.companyqr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null" >
+        createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lasttime != null" >
+        lastTime = #{record.lasttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.detailaddress != null" >
+        detailaddress = #{record.detailaddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update companyinfom
+    set companyid = #{record.companyid,jdbcType=INTEGER},
+      companyName = #{record.companyname,jdbcType=VARCHAR},
+      servicePhone = #{record.servicephone,jdbcType=VARCHAR},
+      serviceTime = #{record.servicetime,jdbcType=VARCHAR},
+      companyaddress = #{record.companyaddress,jdbcType=VARCHAR},
+      companylogo = #{record.companylogo,jdbcType=VARCHAR},
+      companyQR = #{record.companyqr,jdbcType=VARCHAR},
+      createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      lastTime = #{record.lasttime,jdbcType=TIMESTAMP},
+      detailaddress = #{record.detailaddress,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sourongindex.companyinfom.domain.CompanyinfomVO" >
+    update companyinfom
+    <set >
+      <if test="companyname != null" >
+        companyName = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="servicephone != null" >
+        servicePhone = #{servicephone,jdbcType=VARCHAR},
+      </if>
+      <if test="servicetime != null" >
+        serviceTime = #{servicetime,jdbcType=VARCHAR},
+      </if>
+      <if test="companyaddress != null" >
+        companyaddress = #{companyaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companylogo != null" >
+        companylogo = #{companylogo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyqr != null" >
+        companyQR = #{companyqr,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lasttime != null" >
+        lastTime = #{lasttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="detailaddress != null" >
+        detailaddress = #{detailaddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where companyid = #{companyid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sourongindex.companyinfom.domain.CompanyinfomVO" >
+    update companyinfom
+    set companyName = #{companyname,jdbcType=VARCHAR},
+      servicePhone = #{servicephone,jdbcType=VARCHAR},
+      serviceTime = #{servicetime,jdbcType=VARCHAR},
+      companyaddress = #{companyaddress,jdbcType=VARCHAR},
+      companylogo = #{companylogo,jdbcType=VARCHAR},
+      companyQR = #{companyqr,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      lastTime = #{lasttime,jdbcType=TIMESTAMP},
+      detailaddress = #{detailaddress,jdbcType=VARCHAR}
+    where companyid = #{companyid,jdbcType=INTEGER}
+  </update>
+</mapper>

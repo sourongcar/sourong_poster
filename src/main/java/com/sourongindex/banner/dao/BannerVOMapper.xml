@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sourongindex.banner.dao.BannerVOMapper" >
+  <resultMap id="BaseResultMap" type="com.sourongindex.banner.domain.BannerVO" >
+    <id column="bannerID" property="bannerid" jdbcType="INTEGER" />
+    <result column="picName" property="picname" jdbcType="VARCHAR" />
+    <result column="picIntro" property="picintro" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="lastTime" property="lasttime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    bannerID, picName, picIntro, createTime, lastTime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sourongindex.banner.domain.BannerVOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from banner
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null" >
+      <if test="offset != null" >
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null" >
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from banner
+    where bannerID = #{bannerid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from banner
+    where bannerID = #{bannerid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sourongindex.banner.domain.BannerVOExample" >
+    delete from banner
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sourongindex.banner.domain.BannerVO" useGeneratedKeys="true" keyProperty="id" >
+    insert into banner (bannerID, picName, picIntro, 
+      createTime, lastTime)
+    values (#{bannerid,jdbcType=INTEGER}, #{picname,jdbcType=VARCHAR}, #{picintro,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{lasttime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sourongindex.banner.domain.BannerVO" useGeneratedKeys="true" keyProperty="id" >
+    insert into banner
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bannerid != null" >
+        bannerID,
+      </if>
+      <if test="picname != null" >
+        picName,
+      </if>
+      <if test="picintro != null" >
+        picIntro,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="lasttime != null" >
+        lastTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bannerid != null" >
+        #{bannerid,jdbcType=INTEGER},
+      </if>
+      <if test="picname != null" >
+        #{picname,jdbcType=VARCHAR},
+      </if>
+      <if test="picintro != null" >
+        #{picintro,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lasttime != null" >
+        #{lasttime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sourongindex.banner.domain.BannerVOExample" resultType="java.lang.Integer" >
+    select count(*) from banner
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update banner
+    <set >
+      <if test="record.bannerid != null" >
+        bannerID = #{record.bannerid,jdbcType=INTEGER},
+      </if>
+      <if test="record.picname != null" >
+        picName = #{record.picname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.picintro != null" >
+        picIntro = #{record.picintro,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null" >
+        createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lasttime != null" >
+        lastTime = #{record.lasttime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update banner
+    set bannerID = #{record.bannerid,jdbcType=INTEGER},
+      picName = #{record.picname,jdbcType=VARCHAR},
+      picIntro = #{record.picintro,jdbcType=VARCHAR},
+      createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      lastTime = #{record.lasttime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sourongindex.banner.domain.BannerVO" >
+    update banner
+    <set >
+      <if test="picname != null" >
+        picName = #{picname,jdbcType=VARCHAR},
+      </if>
+      <if test="picintro != null" >
+        picIntro = #{picintro,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lasttime != null" >
+        lastTime = #{lasttime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where bannerID = #{bannerid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sourongindex.banner.domain.BannerVO" >
+    update banner
+    set picName = #{picname,jdbcType=VARCHAR},
+      picIntro = #{picintro,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      lastTime = #{lasttime,jdbcType=TIMESTAMP}
+    where bannerID = #{bannerid,jdbcType=INTEGER}
+  </update>
+</mapper>
