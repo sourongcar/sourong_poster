@@ -141,6 +141,8 @@
 						<ul class="submenu">
 							<li>
 								<a href="${path }/reservation/list.action?isRead=0"target="contentframe"><i class="icon-double-angle-right"></i>待服务咨询用户列表</a>
+							</li>
+							<li>
 								<a href="${path }/reservation/list.action?isRead=1"target="contentframe"><i class="icon-double-angle-right"></i>已服务咨询用户列表</a>
 							</li>
 						</ul>

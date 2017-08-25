@@ -182,7 +182,7 @@
 				mydatatables.ajax.reload();
 			});
 			
-			$("#xxx").keydown(function(e) {
+			$("#username,#userphone").keydown(function(e) {
 				if(e.keyCode==13){
 					mydatatables.ajax.reload();
 				}

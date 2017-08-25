@@ -184,6 +184,12 @@
 								"columnDefs" : [
 										{
 											"render" : function(data, type, row) {
+												return data&&("<img style='width:100px' src='"+data+"'>")||"未知";
+											},
+											"targets" : 4
+										},
+										{
+											"render" : function(data, type, row) {
 												return data||"未知";
 											},
 											"targets" : [5,6]
@@ -220,7 +226,7 @@
 				mydatatables.ajax.reload();
 			});
 			
-			$("#xxx").keydown(function(e) {
+			$("#searchUsername,#searchUserphone").keydown(function(e) {
 				if(e.keyCode==13){
 					mydatatables.ajax.reload();
 				}

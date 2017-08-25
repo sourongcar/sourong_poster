@@ -50,10 +50,10 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<div>
-				<!-- <input type="text" class="form-control-static" id="xxx"
-					placeholder="请输入xxx">
+				<input type="text" class="form-control-static" id="title"
+					placeholder="请输入标题">
 					
-				<button type="button" class="btn btn-default" id="search">查询</button> -->
+				<button type="button" class="btn btn-default" id="search">查询</button>
 				
 				<a  href="${path }/poster/edit.action" class="btn btn-primary" id="add">新增</a>
 				
@@ -113,7 +113,7 @@
 									"data" : function(pdata) {
 										
 										pdata.searchColumns={
-												"xxxLike":$("#xxx").val()
+												"PostertitleLike":$("#title").val()
 										}
 										var data = JSON.stringify(pdata);
 										//JSON.parse();
@@ -144,7 +144,7 @@
 								"columnDefs" : [
 										{
 											"render" : function(data, type, row) {
-												return '<img onclick="showImg(this.src)" src="/images/'+data+'" data-rel="tooltip" title="查看图片" style="max-width:200px;">';
+												return '<img onclick="showImg(this.src)" src="/img/'+data+'" data-rel="tooltip" title="查看图片" style="max-width:60px;">';
 											},
 											"targets" : 2
 										},
@@ -167,7 +167,7 @@
 				mydatatables.ajax.reload();
 			});
 			
-			$("#xxx").keydown(function(e) {
+			$("#title").keydown(function(e) {
 				if(e.keyCode==13){
 					mydatatables.ajax.reload();
 				}
