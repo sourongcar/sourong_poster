@@ -60,9 +60,9 @@ public class WxuserServiceImp implements WxuserService {
 	public DataTablesResponse<WxuserVO> listByPage(DataTablesRequest request)
 			throws Throwable {
 		WxuserVOExample example = new WxuserVOExample();
-		example.createCriteria().andIsdisplayEqualTo(1);
 		DataTablesResponse<WxuserVO> response = new DataTablesResponse<WxuserVO>();
 		SearchConditionUtils.wrapperAndCondition(example, request);// 封装查询条件
+		example.getOredCriteria().get(0).andIsdisplayEqualTo(1);
 		response.setDraw(request.getDraw());
 		response.setRecordsTotal(mapper.countByExample(example));
 		response.setData(mapper.selectByExample(example));

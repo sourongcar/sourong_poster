@@ -28,7 +28,7 @@
 					
 				<button type="button" class="btn btn-default" id="search">查询</button>
 				
-				<a  href="${path }/wxuser/edit.action" class="btn btn-primary" id="add">新增</a>
+				<%-- <a  href="${path }/wxuser/edit.action" class="btn btn-primary" id="add">新增</a> --%>
 				
 			</div>
 			<div class="table-responsive">
@@ -167,16 +167,6 @@
 								{
 									"data" : "referrerid"
 								},
-								
-								/* {
-									"data" : "role"
-								},
-								{
-									"data" : "createtime"
-								},
-								{
-									"data" : "changetime"
-								}, */
 								{
 									"data" : "id",
 									"orderable":false
@@ -202,8 +192,7 @@
 										},
 										{
 											"render" : function(data, type, row) {
-												return '<p:permission privilege="com.sourong.wxuser.controller.WxuserController:doEdit"><a href="${path }/wxuser/edit.action?id='+row.userid+'" class="tooltip-success" data-rel="tooltip" title="修改"><span class="green"><i class="icon-edit bigger-120"></i></a></p:permission>&nbsp;&nbsp;'
-												+'<p:permission privilege="com.sourong.wxuser.controller.WxuserController:doDelete"><a href="javascript:void(0)" onclick="del(\''+row.userid+'\')" class="tooltip-error" data-rel="tooltip" title="删除"><span class="red"><i class="icon-trash bigger-120"></i></a></p:permission>';
+												return '<p:permission privilege="com.sourong.wxuser.controller.WxuserController:doEdit"><a href="${path }/wxuser/edit.action?id='+row.userid+'" class="tooltip-success" data-rel="tooltip" title="修改"><span class="green"><i class="icon-search bigger-120"></i></a></p:permission>&nbsp;&nbsp;';
 											},
 											"targets" : 9
 										},{
