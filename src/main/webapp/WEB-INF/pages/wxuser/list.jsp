@@ -45,10 +45,10 @@
 							<th>姓名</th>
 							<th>推荐人ID</th>
 							<th>上下家</th>
-							<!-- <th>角色</th>
+							<%-- <th>角色</th>
 							<th>createtime</th>
-							<th>changetime</th> -->
-							<th>操作</th>
+							<th>changetime</th>
+							<th>操作</th> --%>
 						</tr>
 					</thead>
 					<tbody>
@@ -189,12 +189,6 @@
 												return data||"无";
 											},
 											"targets" : 7
-										},
-										{
-											"render" : function(data, type, row) {
-												return '<p:permission privilege="com.sourong.wxuser.controller.WxuserController:doEdit"><a href="${path }/wxuser/edit.action?id='+row.userid+'" class="tooltip-success" data-rel="tooltip" title="修改"><span class="green"><i class="icon-search bigger-120"></i></a></p:permission>&nbsp;&nbsp;';
-											},
-											"targets" : 9
 										},{
 											"render" : function(data, type, row) {
 												return "<button class='btn btn-danger' data-toggle='modal' data-target='#myModal'"+ 
