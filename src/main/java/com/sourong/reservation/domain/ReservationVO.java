@@ -6,7 +6,7 @@ import java.util.Date;
 public class ReservationVO implements Serializable {
     private Integer reservationid;
 
-    private String userid;
+    private Integer userid;
 
     private String username;
 
@@ -30,12 +30,12 @@ public class ReservationVO implements Serializable {
         this.reservationid = reservationid;
     }
 
-    public String getUserid() {
+    public Integer getUserid() {
         return userid;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid == null ? null : userid.trim();
+    public void setUserid(Integer userid) {
+        this.userid = userid;
     }
 
     public String getUsername() {
