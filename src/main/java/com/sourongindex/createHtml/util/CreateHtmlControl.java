@@ -61,7 +61,7 @@ public class CreateHtmlControl {
 		root.put("title", about.getTitle());
 		root.put("aboutpic", about.getPicname());
 		root.put("specificDescribe", about.getSpecificdescribe());
-		html.exportHtml("home", root, "home.html");
+		html.exportHtml("home", root);
 		return "consultant/succeed";
 	}
 }
