@@ -151,7 +151,7 @@
 											return "<button onClick=checkContent(this) data-toggle='modal' data-target='#myModal' class='btn btn-info' style='line-height: 0.5;font-size: 11px;padding: 7px 10px;'>查看咨询结果</button>";
 										}else if(row.disposal == 0){
 											return "<button onClick=recordContent(this) data-toggle='modal' data-target='#myModal' class='btn btn-info' style='line-height: 0.5;font-size: 11px;padding: 7px 10px;'>记录咨询结果</button>"+
-											"<button onClick=mark("+data+") class='btn btn-success' style=' line-height: 0.5;font-size: 11px;padding: 7px 10px;'>标记为已查看</button>" ; 
+											"<button onClick=mark("+row.reservationid+") class='btn btn-success' style=' line-height: 0.5;font-size: 11px;padding: 7px 10px;'>标记为已查看</button>" ; 
 										}
 									},
 									"targets" :7,
