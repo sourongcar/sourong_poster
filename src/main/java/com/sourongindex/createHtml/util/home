@@ -254,13 +254,13 @@
 
 					<!--index-container start-->
 					<div class="index-container">
-						<div class="am-g am-g-fixed">
+						<div class="am-g">
 						<#list Prouducts as item>
 							<div class="am-u-md-3" style="text-align:center">
 								<div class="service_item">
 									<img src="img/${item.icon}" alt="图标" style="width:70%;"/>
 									<h3 class="service_item--title">${item.productname}</h3>
-									<div class="service_item--text">
+									<div class="service_item--text" style="height:46px;">
 										<p style="text-align:center">${item.productintro}</p>
 									</div>
 									<!--<footer class="service_item--footer">
