@@ -57,7 +57,7 @@
 							<div class="am-g">
 								<div class="am-u-lg-2 am-u-sm-12">
 									<div class="logo">
-										<a href=""><img src="assets/img/${companylogo}" alt="" /></a>
+										<a href=""><img src="img/${companylogo}" alt="" /></a>
 									</div>
 								</div>
 								<div class="am-u-md-10">
@@ -164,7 +164,7 @@
 					</div>
 					<div class="am-u-sm-5 am-u-end">
 						<div class="m-logo">
-							<a href=""><img src="assets/img/logo.png" alt=""></a>
+							<a href=""><img src="img/${companylogo}" alt=""></a>
 						</div>
 					</div>
 				</div>
@@ -176,7 +176,7 @@
 				<ul class="am-slides">
 					<#list Banners as item>
 					<li>
-						<img src="assets/img/${item.picname}">
+						<img src="img/${item.picname}">
 						<div class="am-slider-desc">${item.picintro}</div>
 					</li>
 					</#list>
@@ -192,7 +192,7 @@
 						<#list Consultants as item>
 						<li>
 							<div class="am-gallery-item">
-								<img src="assets/img/${item.consultantpic}" alt="融资规划师" />
+								<img src="img/${item.consultantpic}" alt="融资规划师" />
 								<h2 class="am-gallery-title" style="font-size: 20px;">融资规划师</h2>
 								<h3 class="am-gallery-title" style="font-size: 16px;font-weight: bold;">${item.name}</h3>
 								<div class="am-gallery-desc" style="font-size: 16px;">${item.phone}</div>
@@ -213,7 +213,7 @@
 							<#list Serviceideas as item>
 								<div class="am-u-md-3">
 									<div class="features_item">
-										<img src="assets/img/${item.picname}" alt="" >
+										<img src="img/${item.picname}" alt="" >
 										<p class="features_item--text">										
 											${item.ideadescribe}
 										</p>
@@ -239,7 +239,7 @@
 					
 						</div>
 						<div class="am-u-md-6 am-hide-sm-only ">
-							<img src="assets/img/${aboutpic}" class="am-img-responsive" alt="" style="margin-top: 8%;" />
+							<img src="img/${aboutpic}" class="am-img-responsive" alt="" style="margin-top: 8%;" />
 						</div>
 					</div>
 				</div> 
@@ -258,7 +258,7 @@
 						<#list Prouducts as item>
 							<div class="am-u-md-3" style="text-align:center">
 								<div class="service_item">
-									<img src="assets/img/${item.icon}" alt="图标" style="width:12vh;height:11vh"/>
+									<img src="img/${item.icon}" alt="图标" style="width:70%;"/>
 									<h3 class="service_item--title">${item.productname}</h3>
 									<div class="service_item--text">
 										<p style="text-align:center">${item.productintro}</p>
@@ -310,13 +310,19 @@
 									<div class="footer_main--column">
 										<strong class="footer_main--column_title">微信公众号：</strong>
 										<ul class="footer_contact_info">
-											<li class="footer_contact_info--item"><img src="assets/img/${companyqr}" alt="" /></li>
+											<li class="footer_contact_info--item"><img src="img/${companyqr}" alt="" /></li>
 										</ul>
 									</div>
 								</div>
 							</div>
 						</div>
-                                                  <p  style="text-align:center;color:white;margin-bottom:0" > 粤ICP备17102391号</p>
+                          <p  style="text-align:center;color:white;margin-bottom:0" > 粤ICP备17102391号</p>
+                          <div style="width:300px;margin:0 auto; padding:0 0;text-align:center">
+							<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030402000861" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+            					<img src="assets/img/policelogo.png" style="float:left;">
+								<p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">粤公网安备 44030402000861号</p>
+							</a>
+                          </div>
 					</div>                                          
 				</div>                                                          
 			</div>
