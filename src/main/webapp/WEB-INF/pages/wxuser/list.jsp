@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>xxx列表</title>
+<title>微信用户列表</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <%@ include file="/WEB-INF/pages/common/rs_css.jsp"%>
 <style type="text/css">
@@ -230,10 +230,10 @@
 		}
 		
 		function getUpAndDown(id){
-			$("#u_up").html('<div style="margin: 1vw 0">null</div>');
-			$("#up").html('<div style="margin: 1vw 0">null</div>');
-			$("#down").html('<div style="margin: 1vw 0">null</div>');
-			$("#d_down").html('<div style="margin: 1vw 0">null</div>');
+			$("#u_up").html('<div style="margin: 1vw 0">(空)</div>');
+			$("#up").html('<div style="margin: 1vw 0">(空)</div>');
+			$("#down").html('<div style="margin: 1vw 0">(空)</div>');
+			$("#d_down").html('<div style="margin: 1vw 0">(空)</div>');
 			$.ajax({
 				  "url":"${path}/wxuser/rest/getUpAndDown.action",
 					"type":"POST",
@@ -247,19 +247,25 @@
 						var data3 = data[3];
 						console.log(data0)
 						if(data0!=null){
-							var html = '<div class="col-sm-4 col-md-4 col-xs-4" style="margin:1vw 0;text-align:center">'+data0.username+'</div>'+'<div class="col-sm-8 col-md-8 col-xs-8" style="margin:1vw 0;text-align:center">'+data0.userphone+'</div>';
+							var html = '<div class="col-sm-4 col-md-4 col-xs-4" style="margin:1vw 0;text-align:center">'+(data0.username||"(空)")+'</div>'+'<div class="col-sm-8 col-md-8 col-xs-8" style="margin:1vw 0;text-align:center">'+(data0.userphone||"(空)")+'</div>';
 							$("#u_up").html(html);
 						}
 						if(data1!=null){
-							var html = '<div class="col-sm-4 col-md-4 col-xs-4" style="margin:1vw 0;text-align:center">'+data1.username+'</div>'+'<div class="col-sm-8 col-md-8 col-xs-8" style="margin:1vw 0;text-align:center">'+data1.userphone+'</div>';
+							var html = '<div class="col-sm-4 col-md-4 col-xs-4" style="margin:1vw 0;text-align:center">'+(data1.username||"(空)")+'</div>'+'<div class="col-sm-8 col-md-8 col-xs-8" style="margin:1vw 0;text-align:center">'+(data1.userphone||"(空)")+'</div>';
 							$("#up").html(html);
 						}
 						if(data2!=null){
-							console.log(data2)
-							$("#down").html("");
+							$("#down").html('');
 							for(var i=0;i<data2.length;i++){
-								var html = '<div class="col-sm-4 col-md-4 col-xs-4" style="margin:1vw 0;text-align:center">'+data2[i].username+'</div>'+'<div class="col-sm-8 col-md-8 col-xs-8" style="margin:1vw 0;text-align:center">'+data2[i].userphone+'</div>';
+								var html = '<div class="col-sm-4 col-md-4 col-xs-4" style="margin:1vw 0;text-align:center">'+(data2[i].username||"(空)")+'</div>'+'<div class="col-sm-8 col-md-8 col-xs-8" style="margin:1vw 0;text-align:center">'+(data2[i].userphone||"(空)")+'</div>';
 								$("#down").append(html);
+					        }
+						}
+						if(data3!=null){
+							$("#d_down").html('');
+							for(var i=0;i<data3.length;i++){
+								var html = '<div class="col-sm-4 col-md-4 col-xs-4" style="margin:1vw 0;text-align:center">'+(data3[i].username||"(空)")+'</div>'+'<div class="col-sm-8 col-md-8 col-xs-8" style="margin:1vw 0;text-align:center">'+(data3[i].userphone||"(空)")+'</div>';
+								$("#d_down").append(html);
 					        }
 						}
 					},

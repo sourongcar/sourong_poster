@@ -55,6 +55,7 @@
 				</h4>
 			</div>
 			<div class="modal-body">
+				<span></span>
 								<div  style="height:400px; overflow:auto">
 					<div>
 						<h5>上上家</h5>
@@ -243,9 +244,12 @@
 		}
 		function checkPartner(id){
 			$('.modal-title').text('查看上家');
-			$('.modal-body').text("无上级信息")
+			$(".modal-body>span").text("无上级信息").show();
+			$(".modal-body>div").hide();
+			$("#u_up").html('<div style="margin: 1vw 0">(空)</div>');
+			$("#up").html('<div style="margin: 1vw 0">(空)</div>');
 			 $.ajax({
-				"url":${path}+"wxuser/rest/getSuperAndSuper.action",
+				"url":"${path}/wxuser/rest/getSuperAndSuper.action",
 				"type":"POST",
 				"data":{"id":id},
 				"dataType":"json",
@@ -253,12 +257,16 @@
 					var data0 = data[0];
 					var data1 = data[1];
 					if(data0!=null){
-						var html = '<div class="col-sm-4 col-md-4 col-xs-4" style="margin:1vw 0;text-align:center">'+data0.username+'</div>'+'<div class="col-sm-8 col-md-8 col-xs-8" style="margin:1vw 0;text-align:center">'+data0.userphone+'</div>';
+						var html = '<div class="col-sm-4 col-md-4 col-xs-4" style="margin:1vw 0;text-align:center">'+(ata0.username||"(空)")+'</div>'+'<div class="col-sm-8 col-md-8 col-xs-8" style="margin:1vw 0;text-align:center">'+(data0.userphone||"(空)")+'</div>';
 						$("#u_up").html(html);
 					}
 					if(data1!=null){
-						var html = '<div class="col-sm-4 col-md-4 col-xs-4" style="margin:1vw 0;text-align:center">'+data1.username+'</div>'+'<div class="col-sm-8 col-md-8 col-xs-8" style="margin:1vw 0;text-align:center">'+data1.userphone+'</div>';
+						var html = '<div class="col-sm-4 col-md-4 col-xs-4" style="margin:1vw 0;text-align:center">'+(data1.username||"(空)")+'</div>'+'<div class="col-sm-8 col-md-8 col-xs-8" style="margin:1vw 0;text-align:center">'+(data1.userphone||"(空)")+'</div>';
 						$("#up").html(html);
+					}
+					if(data0!=null||data1!=null){
+						$(".modal-body>span").hide();
+						$(".modal-body>div").show();
 					}
 				},
 				 "error":function(data){

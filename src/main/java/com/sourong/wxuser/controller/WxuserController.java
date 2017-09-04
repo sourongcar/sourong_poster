@@ -9,7 +9,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.base.common.domain.CurrentUser;
 import com.base.common.domain.JsonResult;
 import com.base.datatables.domain.DataTablesRequest;
 import com.base.datatables.domain.DataTablesResponse;
@@ -88,8 +87,8 @@ public class WxuserController {
 			List<WxuserVO> list = service.getSubordinates(wxuserVO.getUserid());
 			underlist2.addAll(list);
 		}
-		obj.add(supervisor);
 		obj.add(super_supervisor);
+		obj.add(supervisor);
 		obj.add(underlist1);
 		obj.add(underlist2);
 		
@@ -114,8 +113,8 @@ public class WxuserController {
 				super_supervisor = service.getSupervisor(supervisor.getReferrerid());
 			}
 		}
-		obj.add(supervisor);
 		obj.add(super_supervisor);
+		obj.add(supervisor);
 		return obj;
 	}
 	
