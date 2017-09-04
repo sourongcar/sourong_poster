@@ -254,14 +254,14 @@
 							var html = '<div class="col-sm-4 col-md-4 col-xs-4" style="margin:1vw 0;text-align:center">'+(data1.username||"(空)")+'</div>'+'<div class="col-sm-8 col-md-8 col-xs-8" style="margin:1vw 0;text-align:center">'+(data1.userphone||"(空)")+'</div>';
 							$("#up").html(html);
 						}
-						if(data2!=null){
+						if(data2!=null&&data2.length>0){
 							$("#down").html('');
 							for(var i=0;i<data2.length;i++){
 								var html = '<div class="col-sm-4 col-md-4 col-xs-4" style="margin:1vw 0;text-align:center">'+(data2[i].username||"(空)")+'</div>'+'<div class="col-sm-8 col-md-8 col-xs-8" style="margin:1vw 0;text-align:center">'+(data2[i].userphone||"(空)")+'</div>';
 								$("#down").append(html);
 					        }
 						}
-						if(data3!=null){
+						if(data3!=null&&data3.length>0){
 							$("#d_down").html('');
 							for(var i=0;i<data3.length;i++){
 								var html = '<div class="col-sm-4 col-md-4 col-xs-4" style="margin:1vw 0;text-align:center">'+(data3[i].username||"(空)")+'</div>'+'<div class="col-sm-8 col-md-8 col-xs-8" style="margin:1vw 0;text-align:center">'+(data3[i].userphone||"(空)")+'</div>';
